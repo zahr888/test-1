@@ -17,8 +17,8 @@ jobs:
                 path: dragon.txt
 
     job2_test:
-        runs-on: ubuntu-latest
         needs: job1_build
+        runs-on: ubuntu-latest
         steps:
             - name: download file
               uses: actions/download-artifact@v4
@@ -27,11 +27,11 @@ jobs:
                 path: dragon.txt
 
             - name: test file exists
-              run: grep -i "dragon" dragon.txt || echo "File not found"
+              run: grep -i "dragon" dragon.txt
 
     job3_deploy:
-        runs-on: ubuntu-latest
         needs: job2_test
+        runs-on: ubuntu-latest
         steps:
             - name: download file
               uses: actions/download-artifact@v4
@@ -40,6 +40,4 @@ jobs:
                 path: dragon.txt
 
             - name: display file content
-              run: |
-                cat dragon.txt
-                ls -ltra
+              run: cat dragon.txt
