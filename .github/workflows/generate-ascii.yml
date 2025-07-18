@@ -10,15 +10,21 @@ jobs:
               run: sudo apt-get install cowsay -y
             - name: execute cowsay cmd
               run: cowsay -f dragon "run for cover soy dragon" >> dragon.txt
-            - name: sleep for 30 seconds
-              run: sleep 30
-        
+            - name: upload file
+              uses: actions/upload-artifact@v3
+              with:
+                name: dragon-text-file
+                path: dragon.txt
+
     job2_test:
         runs-on: ubuntu-latest
         needs: job1_build
         steps:
-            - name: sleep for 10 seconds
-              run: sleep 10
+            - name: download file
+              uses: actions/download-artifact@v3
+              with:
+                name: dragon-text-file
+                path: dragon.txt
 
             - name: test file exists
               run: grep -i "dragon" dragon.txt || echo "File not found"
@@ -27,6 +33,12 @@ jobs:
         runs-on: ubuntu-latest
         needs: job2_test
         steps:
+            - name: download file
+              uses: actions/download-artifact@v3
+              with:
+                name: dragon-text-file
+                path: dragon.txt
+
             - name: display file content
               run: |
                 cat dragon.txt
