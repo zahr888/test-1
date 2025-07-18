@@ -9,11 +9,11 @@ jobs:
         - name : check repo
           uses: actions/checkout@v4
 
-        - name: welcome
-          run: echo "3aslema ye hmema"
-        
-        - name: list files
-          run: ls
-        
-        - name: read files 
-          run: cat README.md
+        - name: list and read files
+          run: |
+           echo "3aslema ye hmema"
+           ls -ltra
+           cat README.md
+        - name : generate ascii
+          run : cowsay -f dragon "run " >> dragon.txt
+            
