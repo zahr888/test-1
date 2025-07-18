@@ -18,7 +18,7 @@ jobs:
         needs: job1_build
         steps:
             - name: sleep for 10 seconds
-              uses: sleep 10
+              run: sleep 10
 
             - name: test file exists
               run: grep -i "dragon" dragon.txt || echo "File not found"
