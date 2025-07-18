@@ -25,6 +25,7 @@ jobs:
 
     job3_deploy:
         runs-on: ubuntu-latest
+        needs: job2_test
         steps:
             - name: display file content
               run: |
