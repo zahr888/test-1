@@ -21,7 +21,7 @@ jobs:
         needs: job1_build
         steps:
             - name: download file
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: dragon-text-file
                 path: dragon.txt
@@ -34,7 +34,7 @@ jobs:
         needs: job2_test
         steps:
             - name: download file
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: dragon-text-file
                 path: dragon.txt
