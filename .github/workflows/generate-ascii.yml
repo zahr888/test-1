@@ -1,43 +1,20 @@
-name : generate ascii artwork
+name : manual workflow
 
-on: push
+on: 
+  schedule:
+  - cron : '*/1 * * * *'
 
+
+env:
+  TEST_ENV_VAR: "zahr"
+  ANOTHER_ENV_VAR: "hammami"
 jobs:
     job1_build:
         runs-on: ubuntu-latest
         steps:
-            - name: install cowsay
-              run: sudo apt-get install cowsay -y
-            - name: execute cowsay cmd
-              run: cowsay -f dragon "run for cover soy dragon" >> dragon.txt
-            - name: upload file
-              uses: actions/upload-artifact@v4
-              with:
-                name: dragon-text-file
-                path: dragon.txt
-
-    job2_test:
-        needs: job1_build
-        runs-on: ubuntu-latest
-        steps:
-            - name: download file
-              uses: actions/download-artifact@v4
-              with:
-                name: dragon-text-file
-                path: .
-
-            - name: test file exists
-              run: grep -i "dragon" dragon.txt
-
-    job3_deploy:
-        needs: job2_test
-        runs-on: ubuntu-latest
-        steps:
-            - name: download file
-              uses: actions/download-artifact@v4
-              with:
-                name: dragon-text-file
-                path: .
-
-            - name: display file content
-              run: cat dragon.txt
+            - name: echo 1
+              run: echo " $TEST_ENV_VAR , $ANOTHER_ENV_VAR "
+            - name: echo 2
+              run: echo " gatta3 "
+            - name: echo 3
+              run: echo " wassup "
