@@ -1,21 +1,21 @@
-name : manual workflow
+name: "manual workflow"
 
 on: 
   workflow_dispatch:
   # schedule:
-  # - cron : '*/1 * * * *'
-
+  #   - cron: '*/1 * * * *'
 
 env:
   TEST_ENV_VAR: "zahr"
   ANOTHER_ENV_VAR: "hammami"
+
 jobs:
-    job1_build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: echo 1
-              run: echo " $TEST_ENV_VAR , $ANOTHER_ENV_VAR "
-            - name: echo 2
-              run: echo " gatta3 "
-            - name: echo 3
-              run: echo " wassup "
+  job1_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo 1
+        run: echo "$TEST_ENV_VAR, $ANOTHER_ENV_VAR"
+      - name: echo 2
+        run: echo "gatta3"
+      - name: echo 3
+        run: echo "wassup"
