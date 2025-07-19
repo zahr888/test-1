@@ -1,10 +1,8 @@
-name: "manual workflow"
+name: "my second workflow"
 
 on: 
   workflow_dispatch:
-  # schedule:
-  #   - cron: '*/1 * * * *'
-
+    
 env:
   TEST_ENV_VAR: "zahr"
   ANOTHER_ENV_VAR: "hammami"
