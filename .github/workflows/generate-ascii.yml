@@ -8,21 +8,15 @@ env:
   ANOTHER_ENV_VAR: "hammami"
 
 jobs:
-  job1_build:
-    runs-on: ubuntu-latest
+  deploy:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, unubntu-20.04]
+        images: [hello-world, hello-world2]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: echo 1
-        run: echo "$TEST_ENV_VAR, $ANOTHER_ENV_VAR"
-      - name: echo 2
-        run: echo "gatta3"
-  job2_build:
-    needs: job1_build
-    concurrency:
-      group: job2
-      cancel-in-progress: true
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo 3
-        run: |
-          echo "wassup"
-          sleep 600s
+    - name: echo docker details
+      run: docker info
+
+    - name: run images on ${{ matrix.os }}
+      run: docker run ${{ matrix.images }}
