@@ -15,5 +15,10 @@ jobs:
         run: echo "$TEST_ENV_VAR, $ANOTHER_ENV_VAR"
       - name: echo 2
         run: echo "gatta3"
+  job2_build:
+    runs-on: ubuntu-latest
+    steps:
       - name: echo 3
-        run: echo "wassup"
+        run: |
+          echo "wassup"
+          sleep 600s
