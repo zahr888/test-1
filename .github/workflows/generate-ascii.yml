@@ -1,8 +1,7 @@
 name: "my second workflow"
 
-on: 
-  workflow_dispatch:
-    
+on: push
+
 env:
   TEST_ENV_VAR: "zahr"
   ANOTHER_ENV_VAR: "hammami"
