@@ -16,6 +16,10 @@ jobs:
       - name: echo 2
         run: echo "gatta3"
   job2_build:
+    needs: job1_build
+    concurrency:
+      group: job2
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: echo 3
