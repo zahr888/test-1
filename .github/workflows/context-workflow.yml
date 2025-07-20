@@ -1,5 +1,6 @@
 name: context testing
-on: push
+on: 
+  workflow_dispatch:
 
 jobs:
     dump_context_to_log:
