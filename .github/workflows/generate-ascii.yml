@@ -1,6 +1,6 @@
 name: "my second workflow"
 
-on: 
+on:   
   workflow_dispatch:
 
 env:
