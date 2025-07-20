@@ -10,9 +10,17 @@ env:
 jobs:
   deploy:
     strategy:
+      fail-fast: false
+      max-parallel: 4
       matrix:
-        os: [ubuntu-latest, windows-latest, unubntu-20.04]
-        images: [hello-world, hello-world2]
+        os: [ubuntu-latest, windows-latest, ubuntu-20.04]
+        images: [hello-world, alpine]
+        exclude:
+          - images: alpine
+            os: windows-latest
+        include:
+          - images: amd64/alpine
+            os: ubuntu-20.04
     runs-on: ${{ matrix.os }}
     steps:
     - name: echo docker details
